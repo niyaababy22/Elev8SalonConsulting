@@ -398,14 +398,7 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
 }
 .close-modal:hover { background: var(--accent); color: var(--primary); }
 
-/* PREVIEW NOTICE */
-.preview-banner {
-    position: fixed; bottom: 1rem; right: 1rem; z-index: 99999;
-    background: var(--accent); color: var(--primary);
-    padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem;
-    font-weight: 700; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    pointer-events: none;
-}
+
 
 /* ===== SCROLL TO TOP BUTTON ===== */
 #scroll-top {
@@ -437,3 +430,4 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
     color: var(--accent);
     transform: translateY(-3px);
 }
+
