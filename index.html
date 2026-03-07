@@ -10,7 +10,7 @@
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>emailjs.init("z8Xf2atclo4ICSxXp");</script>    
+<script>emailjs.init("z8Xf2atclo4ICSxXp");</script>
 </head>
 
 <body>
@@ -190,25 +190,28 @@
 <div id="service-modal" class="service-modal">
     <div class="service-modal-content">
         <h2>Select a Service</h2>
-        <button class="service-option">
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/1-on-1-career-coaching">
             <strong>1-on-1 Career Coaching</strong>
             <span>$150/hr · Goal planning, portfolio reviews, income coaching</span>
         </button>
-        <button class="service-option">
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/salon-leadership-consulting">
             <strong>Salon Leadership Consulting</strong>
             <span>$150/hr · Recruiting audits, KPI systems, team coaching</span>
         </button>
-        <button class="service-option">
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/guest-speaking-school-events">
             <strong>Guest Speaking / School Events</strong>
             <span>$150/hr · Preparation, presentation, and Q&A</span>
         </button>
-        <button class="service-option">
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/workshop-facilitation-on-site">
             <strong>Workshop Facilitation (On-Site)</strong>
             <span>$150/hr · Student or staff development modules</span>
         </button>
         <button class="close-modal">Cancel</button>
     </div>
 </div>
+
+<!-- Scroll to top button MUST be before the script -->
+<button id="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">&#8679;</button>
 
 <script>
     // Book Now modal
@@ -223,7 +226,10 @@
         if (e.target === modal) modal.style.display = 'none';
     });
     document.querySelectorAll('.service-option').forEach(btn => {
-        btn.addEventListener('click', () => { modal.style.display = 'none'; });
+        btn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            Calendly.initPopupWidget({ url: btn.dataset.url });
+        });
     });
 
     // Hamburger
@@ -269,9 +275,22 @@
                 console.error('EmailJS error:', error);
             });
     });
-</script>
-</body>
 
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.opacity = '1';
+            scrollTopBtn.style.pointerEvents = 'auto';
+        } else {
+            scrollTopBtn.style.opacity = '0';
+            scrollTopBtn.style.pointerEvents = 'none';
+        }
+    });
+</script>
+
+</body>
 </html>
+
 
 
