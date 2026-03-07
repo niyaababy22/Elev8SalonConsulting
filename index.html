@@ -211,14 +211,6 @@
 </div>
 
 <script>
-    // Adaptive navbar
-    const header = document.getElementById('main-header');
-    function updateHeader() {
-        header.classList.toggle('scrolled', window.scrollY > 60);
-    }
-    window.addEventListener('scroll', updateHeader);
-    updateHeader();
-
     // Book Now modal
     const modal = document.getElementById('service-modal');
     document.getElementById('calendly-button').addEventListener('click', () => {
@@ -259,7 +251,6 @@
 
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        status.style.color = '';
         status.textContent = '';
 
         emailjs.sendForm('service_02zl6un', 'template_ve6fpg8', this)
@@ -277,35 +268,10 @@
                 submitBtn.disabled = false;
                 console.error('EmailJS error:', error);
             });
-
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
-
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    status.textContent = '';
-
-    emailjs.sendForm('service_02zl6un', 'template_ve6fpg8', this)
-        .then(() => {
-            status.style.color = '#D4AF37';
-            status.textContent = '✓ Message sent! We will be in touch soon.';
-            submitBtn.textContent = 'Send Message';
-            submitBtn.disabled = false;
-            document.getElementById('contact-form').reset();
-        })
-        .catch((error) => {
-            status.style.color = '#8B0000';
-            status.textContent = '✗ Something went wrong. Please try again.';
-            submitBtn.textContent = 'Send Message';
-            submitBtn.disabled = false;
-            console.error('EmailJS error:', error);
-        });
-});
+    });
 </script>
 </body>
 
 </html>
+
 
