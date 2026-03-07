@@ -37,6 +37,8 @@ nav {
     box-shadow: none;
 }
 
+
+
 header.scrolled .logo {
     background: transparent;
     box-shadow: none;
@@ -403,4 +405,35 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
     padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem;
     font-weight: 700; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     pointer-events: none;
+}
+
+/* ===== SCROLL TO TOP BUTTON ===== */
+#scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    transition: background 0.3s, transform 0.3s;
+    z-index: 9998;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+
+#scroll-top:hover {
+    background: var(--primary);
+    color: var(--accent);
+    transform: translateY(-3px);
 }
