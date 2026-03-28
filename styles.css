@@ -32,9 +32,7 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    background: transparent;
-    padding: 0;
-    box-shadow: none;
+    overflow: visible;
 }
 
 
@@ -45,9 +43,11 @@ header.scrolled .logo {
 }
 
 .logo img {
-    height: 60px;
+    height: 99px;   /* keeps navbar size the same */
     width: auto;
     display: block;
+    transform: scale(1.4);   /* makes it look bigger */
+    transform-origin: left center;
 }
 
 /* Desktop nav links */
