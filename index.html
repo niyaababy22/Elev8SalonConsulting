@@ -28,12 +28,13 @@
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://yourclient.teachable.com/sign_in" target="_blank" class="student-login-link">Student Login</a></li>
+</ul>
     </nav>
 </header>
 
@@ -50,19 +51,19 @@
     <p class="section-subtitle">Comprehensive training solutions designed for salon professionals and recent graduates seeking to master their craft</p>
     <div class="offerings-grid">
         <div class="offering-card">
-            <div class="offering-icon">🎓</div>
+            <div class="offering-number">01</div>
             <h3>Transitional Training for Recent Graduates</h3>
         </div>
         <div class="offering-card">
-            <div class="offering-icon">📈</div>
+            <div class="offering-number">02</div>
             <h3>Revenue and Salon Management Coaching</h3>
         </div>
         <div class="offering-card">
-            <div class="offering-icon">✂️</div>
+            <div class="offering-number">03</div>
             <h3>Advanced Technical Training</h3>
         </div>
         <div class="offering-card">
-            <div class="offering-icon">🤝</div>
+            <div class="offering-number">04</div>
             <h3>Individual and Salon Team Consulting</h3>
         </div>
     </div>
@@ -71,24 +72,24 @@
 <section class="about-section" id="about">
     <div class="container">
         <div class="about-content">
-            <div class="about-image">
-                <img src="images/boss.png" alt="Elev8 Salon Consulting">
+
+            <div class="about-image-wrapper">
+                <div class="about-image">
+                    <img src="images/boss.png" alt="Elev8 Salon Consulting">
+                </div>
+                <p class="image-caption">Chotal Pinkney</p>
             </div>
+
             <div class="about-text">
                 <h2>About Elev8 Salon Consulting</h2>
-                <p>At Elev8 Salon Consulting, we provide advanced education in cosmetology 
-                    and barbering that goes beyond standard beauty school training. Built on decades of real-world experience, 
-                    our programs empower newly licensed professionals and experienced stylists with practical techniques they can immediately 
-                    apply in their salon or barbershop.
-                <p></p>
-                    ELEV8 Training empowers beauty professionals to elevate their careers through 8 industry-driven modules 
-                    focused on guest experience, financial growth, leadership development, and salon success.</p>
+                <p>At Elev8 Salon Consulting, we provide advanced education in cosmetology and barbering that goes beyond standard beauty school training. Built on decades of real-world experience, our programs empower newly licensed professionals and experienced stylists with practical techniques they can immediately apply in their salon or barbershop.</p>
 
-                
+                <p>ELEV8 Training empowers beauty professionals to elevate their careers through 8 industry-driven modules focused on guest experience, financial growth, leadership development, and salon success.</p>
+
                 <h3>Our Experience / Mission</h3>
-                <p>The mission of ELEV8 Training is to elevate beauty professionals by bridging the gap between technical education and 
-                    real-world salon success through 8 business modules focused on leadership development, and income-building strategies.</p>
+                <p>The mission of ELEV8 Training is to elevate beauty professionals by bridging the gap between technical education and real-world salon success through 8 business modules focused on leadership development and income-building strategies.</p>
             </div>
+
         </div>
     </div>
 </section>
@@ -96,7 +97,7 @@
 <section class="pricing-section" id="services">
     <div class="pricing-card">
         <h3>8-Module Stylist Development Training</h3>
-        <h2>$</h2>
+        <h2>$1200</h2>
         <ul>
             <li>Includes 8 facilitator-led modules, including participant worksheets and binders.</li>
             <li>Elevating Guest Experience</li>
@@ -112,7 +113,7 @@
     </div>
     <div class="pricing-card featured">
         <h3>Salon Development Package</h3>
-        <h2>$</h2>
+        <h2>$1200</h2>
         <ul>
             <li>On-site delivery of 8 customized modules for teams of up to 10.</li>
             <li>Strategies for Growth</li>
@@ -177,10 +178,10 @@
         </div>
 
         <!-- Leave a Review button -->
-        <div style="text-align: center; margin-top: 3rem;">
-            <button class="cta-button" id="open-review-form">Leave a Review</button>
-            <button class="admin-btn" id="open-admin">Manage Reviews</button>
-        </div>
+        <div class="testimonials-buttons">
+    <button class="cta-button" id="open-review-form">Leave a Review</button>
+    <button class="admin-btn" id="open-admin">Manage Reviews</button>
+</div>
 
         
 
@@ -262,23 +263,50 @@
 
 <div id="service-modal" class="service-modal">
     <div class="service-modal-content">
-        <h2>Select a Service</h2>
-        <button class="service-option" data-url="https://calendly.com/niyaarenae66/1-on-1-career-coaching">
-            <strong>1-on-1 Career Coaching</strong>
-            <span>$150/hr · Goal planning, portfolio reviews, income coaching</span>
-        </button>
-        <button class="service-option" data-url="https://calendly.com/niyaarenae66/salon-leadership-consulting">
-            <strong>Salon Leadership Consulting</strong>
-            <span>$150/hr · Recruiting audits, KPI systems, team coaching</span>
-        </button>
-        <button class="service-option" data-url="https://calendly.com/niyaarenae66/guest-speaking-school-events">
-            <strong>Guest Speaking / School Events</strong>
-            <span>$150/hr · Preparation, presentation, and Q&A</span>
-        </button>
+        <h2>Book a Service</h2>
+        <p class="modal-subtitle">Select a service to schedule your appointment</p>
+
         <button class="service-option" data-url="https://calendly.com/niyaarenae66/workshop-facilitation-on-site">
-            <strong>Workshop Facilitation (On-Site)</strong>
-            <span>$150/hr · Student or staff development modules</span>
+            <div class="service-option-inner">
+                <div class="service-details">
+                    <strong>8-Module Stylist Development Training</strong>
+                    <span>Student or staff development modules</span>
+                </div>
+                <span class="service-price">$1,200</span>
+            </div>
         </button>
+
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/1-on-1-career-coaching">
+            <div class="service-option-inner">
+                <div class="service-details">
+                    <strong>1-on-1 Career Coaching</strong>
+                    <span>Goal planning, portfolio reviews, income coaching</span>
+                </div>
+                <span class="service-price">$150/hr</span>
+            </div>
+        </button>
+
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/salon-leadership-consulting">
+            <div class="service-option-inner">
+                <div class="service-details">
+                    <strong>Salon Leadership Consulting</strong>
+                    <span>Recruiting audits, KPI systems, team coaching</span>
+                </div>
+                <span class="service-price">$150/hr</span>
+            </div>
+        </button>
+
+        <button class="service-option" data-url="https://calendly.com/niyaarenae66/guest-speaking-school-events">
+            <div class="service-option-inner">
+                <div class="service-details">
+                    <strong>Guest Speaking / School Events</strong>
+                    <span>Preparation, presentation, and Q&A</span>
+                </div>
+                <span class="service-price">$150/hr</span>
+            </div>
+        </button>
+
+        <p class="modal-note">* 8 hour minimum applies to select services</p>
         <button class="close-modal">Cancel</button>
     </div>
 </div>
@@ -348,7 +376,7 @@
         submitBtn.disabled = true;
         status.textContent = '';
 
-        emailjs.sendForm('service_02zl6un', 'template_ve6fpg8', this)
+        emailjs.sendForm('service_yxxpfgi', 'template_ocinoqj', this)
             .then(() => {
                 status.style.color = '#D4AF37';
                 status.textContent = '✓ Message sent! We will be in touch soon.';
