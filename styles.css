@@ -29,6 +29,21 @@ nav {
     align-items: center;
 }
 
+.student-login-link {
+    color: var(--accent) !important;
+    font-size: 0.85rem;
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.student-login-link:hover {
+    background: var(--accent);
+    color: var(--primary) !important;
+}
+
+
 .logo {
     display: flex;
     align-items: center;
@@ -111,11 +126,12 @@ header.scrolled .logo {
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.96);
+        background: #2a2a2a;
         text-align: center;
         padding: 1.5rem 0 2rem;
         z-index: 9999;
         border-top: 2px solid var(--accent);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         gap: 0;
     }
 
@@ -242,46 +258,124 @@ header.scrolled .logo {
 .section-subtitle { text-align: center; font-size: 1.2rem; color: var(--text-light); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
 /* OFFERINGS */
-.offerings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 3rem; }
-.offering-card {
-    background: var(--white); padding: 2.5rem; border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s; border: 2px solid var(--light);
+.offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
-.offering-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212,175,55,0.2); border-color: var(--accent); }
-.offering-icon {
-    width: 40px; height: 40px; background: var(--accent); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem;
-}
-.offering-card h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--primary); }
 
-/* ABOUT */
-.about-section { background: var(--primary); color: var(--white); }
-.about-content { display: flex; gap: 3rem; align-items: flex-start; }
-.about-image {
-    flex: 0 0 350px;
+.offering-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
     border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    border: 2px solid var(--light);
+    border-top: 4px solid var(--accent);
+    position: relative;
+}
+
+.offering-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+    border-color: var(--accent);
+    border-top-color: var(--accent);
+}
+
+.offering-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.25;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.offering-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.5;
+}
+/* ABOUT */
+.about-section {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.about-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    flex: 0 0 320px;
+    text-align: center;
+}
+
+.about-image {
+    border-radius: 10px;
     overflow: hidden;
     border: 2px solid var(--accent);
 }
 
 .about-image img {
     width: 100%;
-    height: 100%;
-    max-height: 450px;
+    max-height: 420px;
     object-fit: cover;
     object-position: top;
     display: block;
-    border-radius: 6px;
 }
-.about-text { flex: 1; }
-.about-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); }
-.about-text h3 { font-size: 1.8rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--accent); }
-.about-text p { margin-bottom: 1.5rem; color: var(--white); line-height: 1.8; font-size: 1.1rem; }
+
+.image-caption {
+    margin-top: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.about-text h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
 @media (max-width: 768px) {
-    .about-content { flex-direction: column; }
-    .about-image { flex: unset; width: 100%; }
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .about-image-wrapper {
+        flex: unset;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
 }
 
 /* PRICING */
@@ -444,12 +538,13 @@ header.scrolled .logo {
 }
 
 .testimonials-swiper {
-    padding: 1rem 0.5rem 4rem !important;
+    padding: 1rem 0.5rem 3rem !important;
 }
 
 .swiper-slide {
     height: auto;
     display: flex;
+    align-items: stretch;
 }
 
 .testimonial-card {
@@ -463,6 +558,7 @@ header.scrolled .logo {
     width: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 180px;
 }
 
 .testimonial-card:hover {
@@ -487,9 +583,10 @@ header.scrolled .logo {
     position: relative;
     z-index: 1;
     padding-top: 1.5rem;
+    flex-grow: 1;
 }
 
-/* Swiper navigation colors */
+/* Swiper navigation */
 .swiper-button-prev,
 .swiper-button-next {
     color: var(--accent) !important;
@@ -503,6 +600,15 @@ header.scrolled .logo {
 .swiper-pagination-bullet-active {
     opacity: 1 !important;
     background: var(--accent) !important;
+}
+
+/* Review buttons */
+.testimonials-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 /* Review form */
@@ -537,12 +643,6 @@ header.scrolled .logo {
 .cancel-review-btn:hover {
     background: var(--primary);
     color: var(--white);
-}
-
-@media (max-width: 768px) {
-    .testimonials-swiper {
-        padding-bottom: 3rem !important;
-    }
 }
 
 /* Admin button */
@@ -596,6 +696,16 @@ body.admin-mode .testimonial-card {
     border-color: rgba(139, 0, 0, 0.3);
 }
 
+@media (max-width: 768px) {
+    .testimonials-swiper {
+        padding-bottom: 3rem !important;
+    }
+    .testimonials-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 
 
 /* CONTACT */
@@ -634,33 +744,132 @@ body.admin-mode .testimonial-card {
 /* FOOTER */
 footer { background: var(--primary); color: var(--white); text-align: center; padding: 2rem; border-top: 2px solid var(--accent); }
 
-/* MODAL */
+/* ===== SERVICE MODAL ===== */
 .service-modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-    display: none; align-items: center; justify-content: center; z-index: 99999;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 1rem;
 }
+
 .service-modal-content {
-    background: var(--light); color: var(--primary); padding: 2rem;
-    width: 90%; max-width: 420px; border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15); border: 2px solid var(--accent);
+    background: #f9f7f4;
+    color: var(--primary);
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    border: 1px solid rgba(212, 175, 55, 0.4);
 }
-.service-modal-content h2 { color: var(--accent); margin-bottom: 1.5rem; text-align: center; }
+
+.service-modal-content h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.modal-subtitle {
+    color: var(--text-light);
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
 .service-option {
-    width: 100%; background: var(--white); color: var(--primary);
-    border: 2px solid var(--accent); border-radius: 8px; padding: 1rem;
-    margin-bottom: 1rem; cursor: pointer; text-align: left; transition: all 0.3s;
+    width: 100%;
+    background: var(--white);
+    color: var(--primary);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s;
 }
-.service-option strong { display: block; margin-bottom: 0.3rem; }
-.service-option span { font-size: 0.85rem; color: var(--text-light); }
-.service-option:hover { background: var(--accent); color: var(--primary); border-color: var(--primary); }
+
+.service-option:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--accent);
+    transform: translateX(4px);
+}
+
+.service-option-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.service-details {
+    flex: 1;
+}
+
+.service-details strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+}
+
+.service-details span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.service-price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.modal-note {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-align: center;
+    margin: 0.5rem 0 1.2rem;
+}
+
 .close-modal {
-    margin-top: 1rem; background: transparent; border: 2px solid var(--accent);
-    color: var(--accent); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
-    font-weight: 600; display: block; width: 100%; text-align: center; transition: all 0.3s;
+    margin-top: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.2);
+    color: var(--text-light);
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s;
+    font-size: 0.9rem;
 }
-.close-modal:hover { background: var(--accent); color: var(--primary); }
 
+.close-modal:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
 
+@media (max-width: 480px) {
+    .service-modal-content {
+        padding: 1.5rem;
+    }
+    .service-option-inner {
+        gap: 0.75rem;
+    }
+    .service-price {
+        font-size: 0.85rem;
+    }
+}
 
 /* ===== SCROLL TO TOP BUTTON ===== */
 #scroll-top {
@@ -692,4 +901,3 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
     color: var(--accent);
     transform: translateY(-3px);
 }
-
