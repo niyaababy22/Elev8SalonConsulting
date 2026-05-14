@@ -9,8 +9,7 @@
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>emailjs.init("z8Xf2atclo4ICSxXp");</script>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
@@ -219,6 +218,8 @@
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+
+
 <section class="contact-section" id="contact">
     <div class="contact-container">
         <div class="contact-intro">
@@ -283,6 +284,16 @@
             </div>
         </button>
 
+        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/8-facilitator-led-salon-development-modules">
+            <div class="service-option-inner">
+                <div class="service-details">
+                    <strong>8 Facilitator-Led Salon Development Modules</strong>
+                    <span>Student or staff development modules</span>
+                </div>
+                <span class="service-price">$1,200</span>
+            </div>
+        </button>
+
         <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/1-on-1-career-coaching">
             <div class="service-option-inner">
                 <div class="service-details">
@@ -337,7 +348,13 @@
     </div>
 </div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
+    emailjs.init("L8Kv_C7z-kUtNMlYj");
+
     // Book Now modal
     const modal = document.getElementById('service-modal');
     document.getElementById('calendly-button').addEventListener('click', () => {
@@ -373,30 +390,30 @@
     });
 
     // Contact form — EmailJS
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
         e.preventDefault();
 
-        const submitBtn = document.getElementById('submit-btn');
-        const status = document.getElementById('form-status');
+        const submitBtn = document.getElementById("submit-btn");
+        const status = document.getElementById("form-status");
 
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
-        status.textContent = '';
+        status.textContent = "";
 
-        emailjs.sendForm('service_yxxpfgi', 'template_ocinoqj', this)
+        emailjs.sendForm("service_yxxpfgi", "template_ocinoqj", this)
             .then(() => {
-                status.style.color = '#D4AF37';
-                status.textContent = '✓ Message sent! We will be in touch soon.';
-                submitBtn.textContent = 'Send Message';
+                status.style.color = "#D4AF37";
+                status.textContent = "✓ Message sent! We will be in touch soon.";
+                submitBtn.textContent = "Send Message";
                 submitBtn.disabled = false;
-                document.getElementById('contact-form').reset();
+                this.reset();
             })
             .catch((error) => {
-                status.style.color = '#8B0000';
-                status.textContent = '✗ Something went wrong. Please try again.';
-                submitBtn.textContent = 'Send Message';
+                status.style.color = "#8B0000";
+                status.textContent = "✗ Something went wrong. Please try again.";
+                submitBtn.textContent = "Send Message";
                 submitBtn.disabled = false;
-                console.error('EmailJS error:', error);
+                console.error("EmailJS error:", error);
             });
     });
 
@@ -413,153 +430,127 @@
     });
 
     // Swiper init
-const swiper = new Swiper('.testimonials-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: false,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-    }
-});
-
-// Load saved reviews from localStorage on page load
-function loadSavedReviews() {
-    const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
-    saved.forEach(review => {
-        addSlide(review.name, review.text);
+    const swiper = new Swiper('.testimonials-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: false,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
-}
 
-// Save a review to localStorage
-function saveReview(name, text) {
-    const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
-    saved.push({ name, text });
-    localStorage.setItem('elev8_reviews', JSON.stringify(saved));
-}
+    // Load saved reviews from localStorage on page load
+    function loadSavedReviews() {
+        const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
+        saved.forEach(review => { addSlide(review.name, review.text); });
+    }
 
-// Remove a review from localStorage by index (offset by original slides)
-function deleteReview(savedIndex) {
-    const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
-    saved.splice(savedIndex, 1);
-    localStorage.setItem('elev8_reviews', JSON.stringify(saved));
-}
+    function saveReview(name, text) {
+        const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
+        saved.push({ name, text });
+        localStorage.setItem('elev8_reviews', JSON.stringify(saved));
+    }
 
-// Add a slide to the swiper
-function addSlide(name, text, savedIndex = null) {
-    const newSlide = document.createElement('div');
-    newSlide.classList.add('swiper-slide');
-    if (savedIndex !== null) newSlide.dataset.savedIndex = savedIndex;
-    newSlide.innerHTML = `
-        <div class="testimonial-card">
-            <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">${text}</p>
-            ${name ? `<p style="margin-top:1rem; font-weight:600; color:var(--accent);">— ${name}</p>` : ''}
-        </div>
-    `;
-    swiper.appendSlide(newSlide);
-}
+    function deleteReview(savedIndex) {
+        const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
+        saved.splice(savedIndex, 1);
+        localStorage.setItem('elev8_reviews', JSON.stringify(saved));
+    }
 
-// Add delete buttons to user-submitted slides only
-function addDeleteButtons() {
-    const originalCount = 5; // number of hardcoded slides
-    swiper.slides.forEach((slide, index) => {
-        if (index >= originalCount && !slide.querySelector('.delete-slide-btn')) {
-            const btn = document.createElement('button');
-            btn.classList.add('delete-slide-btn');
-            btn.innerHTML = '✕';
-            btn.addEventListener('click', () => {
-                const savedIndex = index - originalCount;
-                deleteReview(savedIndex);
-                swiper.removeSlide(index);
-                // Re-index remaining slides
-                swiper.slides.forEach((s, i) => {
-                    if (i >= originalCount) {
-                        s.dataset.savedIndex = i - originalCount;
-                    }
+    function addSlide(name, text, savedIndex = null) {
+        const newSlide = document.createElement('div');
+        newSlide.classList.add('swiper-slide');
+        if (savedIndex !== null) newSlide.dataset.savedIndex = savedIndex;
+        newSlide.innerHTML = `
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">${text}</p>
+                ${name ? `<p style="margin-top:1rem; font-weight:600; color:var(--accent);">— ${name}</p>` : ''}
+            </div>
+        `;
+        swiper.appendSlide(newSlide);
+    }
+
+    function addDeleteButtons() {
+        const originalCount = 5;
+        swiper.slides.forEach((slide, index) => {
+            if (index >= originalCount && !slide.querySelector('.delete-slide-btn')) {
+                const btn = document.createElement('button');
+                btn.classList.add('delete-slide-btn');
+                btn.innerHTML = '✕';
+                btn.addEventListener('click', () => {
+                    const savedIndex = index - originalCount;
+                    deleteReview(savedIndex);
+                    swiper.removeSlide(index);
+                    swiper.slides.forEach((s, i) => {
+                        if (i >= originalCount) s.dataset.savedIndex = i - originalCount;
+                    });
                 });
-            });
-            slide.querySelector('.testimonial-card').appendChild(btn);
+                slide.querySelector('.testimonial-card').appendChild(btn);
+            }
+        });
+    }
+
+    loadSavedReviews();
+
+    document.getElementById('open-review-form').addEventListener('click', () => {
+        const form = document.getElementById('review-form-container');
+        form.style.display = 'block';
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('cancel-review').addEventListener('click', () => {
+        document.getElementById('review-form-container').style.display = 'none';
+        document.getElementById('review-form').reset();
+    });
+
+    document.getElementById('review-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('review-name').value.trim();
+        const text = document.getElementById('review-text').value.trim();
+        if (!text) return;
+
+        saveReview(name, text);
+        const savedIndex = JSON.parse(localStorage.getItem('elev8_reviews') || '[]').length - 1;
+        addSlide(name, text, savedIndex);
+        swiper.slideTo(swiper.slides.length - 1);
+        document.getElementById('review-form-container').style.display = 'none';
+        document.getElementById('review-form').reset();
+        if (document.body.classList.contains('admin-mode')) addDeleteButtons();
+    });
+
+    const adminModal = document.getElementById('admin-modal');
+
+    document.getElementById('open-admin').addEventListener('click', () => {
+        if (document.body.classList.contains('admin-mode')) {
+            document.body.classList.remove('admin-mode');
+            document.getElementById('open-admin').textContent = 'Manage Reviews';
+            return;
+        }
+        adminModal.style.display = 'flex';
+        document.getElementById('admin-password').value = '';
+        document.getElementById('admin-error').textContent = '';
+    });
+
+    document.getElementById('admin-cancel').addEventListener('click', () => {
+        adminModal.style.display = 'none';
+    });
+
+    adminModal.addEventListener('click', (e) => {
+        if (e.target === adminModal) adminModal.style.display = 'none';
+    });
+
+    document.getElementById('admin-submit').addEventListener('click', () => {
+        const password = document.getElementById('admin-password').value;
+        if (password === 'hairislife') {
+            adminModal.style.display = 'none';
+            document.body.classList.add('admin-mode');
+            document.getElementById('open-admin').textContent = 'Exit Admin Mode';
+            addDeleteButtons();
+        } else {
+            document.getElementById('admin-error').textContent = '✗ Incorrect password. Try again.';
         }
     });
-}
-
-// Load reviews on page load
-loadSavedReviews();
-
-// Review form toggle
-document.getElementById('open-review-form').addEventListener('click', () => {
-    const form = document.getElementById('review-form-container');
-    form.style.display = 'block';
-    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-
-document.getElementById('cancel-review').addEventListener('click', () => {
-    document.getElementById('review-form-container').style.display = 'none';
-    document.getElementById('review-form').reset();
-});
-
-// Submit review
-document.getElementById('review-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('review-name').value.trim();
-    const text = document.getElementById('review-text').value.trim();
-    if (!text) return;
-
-    saveReview(name, text);
-    const savedIndex = JSON.parse(localStorage.getItem('elev8_reviews') || '[]').length - 1;
-    addSlide(name, text, savedIndex);
-    swiper.slideTo(swiper.slides.length - 1);
-
-    document.getElementById('review-form-container').style.display = 'none';
-    document.getElementById('review-form').reset();
-
-    if (document.body.classList.contains('admin-mode')) {
-        addDeleteButtons();
-    }
-});
-
-// Admin modal
-const adminModal = document.getElementById('admin-modal');
-
-document.getElementById('open-admin').addEventListener('click', () => {
-    if (document.body.classList.contains('admin-mode')) {
-        document.body.classList.remove('admin-mode');
-        document.getElementById('open-admin').textContent = 'Manage Reviews';
-        return;
-    }
-    adminModal.style.display = 'flex';
-    document.getElementById('admin-password').value = '';
-    document.getElementById('admin-error').textContent = '';
-});
-
-document.getElementById('admin-cancel').addEventListener('click', () => {
-    adminModal.style.display = 'none';
-});
-
-adminModal.addEventListener('click', (e) => {
-    if (e.target === adminModal) adminModal.style.display = 'none';
-});
-
-document.getElementById('admin-submit').addEventListener('click', () => {
-    const password = document.getElementById('admin-password').value;
-    if (password === 'hairislife') {
-        adminModal.style.display = 'none';
-        document.body.classList.add('admin-mode');
-        document.getElementById('open-admin').textContent = 'Exit Admin Mode';
-        addDeleteButtons();
-    } else {
-        document.getElementById('admin-error').textContent = '✗ Incorrect password. Try again.';
-    }
-});
 </script>
 
 </body>
