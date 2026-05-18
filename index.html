@@ -294,35 +294,60 @@
             </div>
         </button>
 
-        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/1-on-1-career-coaching">
-            <div class="service-option-inner">
-                <div class="service-details">
-                    <strong>1-on-1 Career Coaching</strong>
-                    <span>Goal planning, portfolio reviews, income coaching</span>
-                </div>
-                <span class="service-price">$150/hr</span>
-            </div>
-        </button>
 
-        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/salon-leadership-consulting">
-            <div class="service-option-inner">
-                <div class="service-details">
-                    <strong>Salon Leadership Consulting</strong>
-                    <span>Recruiting audits, KPI systems, team coaching</span>
-                </div>
-                <span class="service-price">$150/hr</span>
+        <!-- 1-on-1 Career Coaching -->
+<div class="service-option-wrapper">
+    <button class="service-option has-dropdown" data-dropdown="career-coaching">
+        <div class="service-option-inner">
+            <div class="service-details">
+                <strong>1-on-1 Career Coaching</strong>
+                <span>Goal planning, portfolio reviews, income coaching</span>
             </div>
-        </button>
+            <span class="service-price">$150/hr ▾</span>
+        </div>
+    </button>
+    <div class="duration-dropdown" id="career-coaching">
+        <a href="https://calendly.com/elev8salonconsulting/1-on-1-career-coaching" target="_blank">1 Hour — $150</a>
+        <a href="https://calendly.com/elev8salonconsulting/1-on-1-career-coaching-clone" target="_blank">2 Hours — $300</a>
+        <a href="https://calendly.com/elev8salonconsulting/1-on-1-career-coaching-2hr-clone" target="_blank">3 Hours — $450</a>
+    </div>
+</div>
 
-        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/guest-speaking-school-events">
-            <div class="service-option-inner">
-                <div class="service-details">
-                    <strong>Guest Speaking / School Events</strong>
-                    <span>Preparation, presentation, and Q&A</span>
-                </div>
-                <span class="service-price">$150/hr</span>
+        <!-- Salon Leadership Consulting -->
+<div class="service-option-wrapper">
+    <button class="service-option has-dropdown" data-dropdown="salon-leadership">
+        <div class="service-option-inner">
+            <div class="service-details">
+                <strong>Salon Leadership Consulting</strong>
+                <span>Recruiting audits, KPI systems, team coaching</span>
             </div>
-        </button>
+            <span class="service-price">$150/hr ▾</span>
+        </div>
+    </button>
+    <div class="duration-dropdown" id="salon-leadership">
+        <a href="https://calendly.com/elev8salonconsulting/salon-leadership-consulting" target="_blank">1 Hour — $150</a>
+        <a href="https://calendly.com/elev8salonconsulting/salon-leadership-consulting-clone" target="_blank">2 Hours — $300</a>
+        <a href="https://calendly.com/elev8salonconsulting/salon-leadership-consulting-2hr-clone" target="_blank">3 Hours — $450</a>
+    </div>
+</div>
+
+        <!-- Guest Speaking / School Events -->
+<div class="service-option-wrapper">
+    <button class="service-option has-dropdown" data-dropdown="guest-speaking">
+        <div class="service-option-inner">
+            <div class="service-details">
+                <strong>Guest Speaking / School Events</strong>
+                <span>Preparation, presentation, and Q&A</span>
+            </div>
+            <span class="service-price">$150/hr ▾</span>
+        </div>
+    </button>
+    <div class="duration-dropdown" id="guest-speaking">
+        <a href="https://calendly.com/elev8salonconsulting/guest-speaking-school-events" target="_blank">1 Hour — $150</a>
+        <a href="https://calendly.com/elev8salonconsulting/guest-speaking-school-events-clone-clone" target="_blank">2 Hours — $300</a>
+        <a href="https://calendly.com/elev8salonconsulting/guest-speaking-school-events-clone" target="_blank">3 Hours — $450</a>
+    </div>
+</div>
 
         <p class="modal-note">* 8 hour minimum applies to select services</p>
         <button class="close-modal">Cancel</button>
@@ -366,12 +391,41 @@
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
-    document.querySelectorAll('.service-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            Calendly.initPopupWidget({ url: btn.dataset.url });
-        });
+    // Dropdown services
+document.querySelectorAll('.service-option.has-dropdown').forEach(button => {
+    button.addEventListener('click', () => {
+        const dropdownId = button.getAttribute('data-dropdown');
+        const dropdown = document.getElementById(dropdownId);
+        const isOpen = dropdown.classList.contains('open');
+
+        document.querySelectorAll('.duration-dropdown').forEach(d => d.classList.remove('open'));
+        document.querySelectorAll('.service-option.has-dropdown').forEach(b => b.classList.remove('open'));
+
+        if (!isOpen) {
+            dropdown.classList.add('open');
+            button.classList.add('open');
+        }
     });
+});
+
+// Duration links — close modal and open Calendly
+document.querySelectorAll('.duration-dropdown a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'none';
+        Calendly.initPopupWidget({ url: link.getAttribute('href') });
+    });
+});
+
+// Flat price services (no dropdown)
+document.querySelectorAll('.service-option:not(.has-dropdown)').forEach(btn => {
+    btn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        Calendly.initPopupWidget({ url: btn.dataset.url });
+    });
+});
+
+
 
     // Hamburger
     const menuToggle = document.querySelector('.menu-toggle');
