@@ -396,8 +396,8 @@ header.scrolled .logo {
     padding: 2rem;
     border-radius: 10px;
     flex: 1;
-    min-width: 260px;
-    max-width: 300px;
+    min-width: 300px; /* changed from 260px */
+    max-width: 420px; /* changed from 340px */
     text-align: center;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
@@ -486,7 +486,10 @@ header.scrolled .logo {
 
 @media (max-width: 1024px) {
     .pricing-card {
-        max-width: 280px;
+        max-width: 420px; /* changed from 340px */
+    }
+    .pricing-card.featured {
+        max-width: 460px; /* changed from 380px */
     }
 }
 
@@ -511,6 +514,33 @@ header.scrolled .logo {
         max-width: 100%;
         padding: 1.5rem;
     }
+}
+
+
+/* EXPANDABLE FEATURE LIST */
+.more-features {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.more-features.show {
+    max-height: 500px;
+}
+
+.expand-btn {
+    margin-bottom: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.expand-btn:hover {
+    color: var(--primary);
 }
 
 /* ===== TESTIMONIALS ===== */
