@@ -116,17 +116,32 @@
     <div class="pricing-card featured">
         <h3>8 Facilitator-Led Salon Development Modules</h3>
         <h2>$1200</h2>
-        <ul>
-            <li>On-site delivery of 8 customized modules for salon teams. </li>
-            <li>Strategies for Growth</li>
-            <li>Service Expansions</li>
-            <li>Financial Overview</li>
-            <li>Follow the Money</li>
-            <li>Business Innovations</li>
-            <li>Training Initiatives</li>
-            <li>Essentials of Leadership</li>
-            <li>The 4Rs of Revenue</li>
-        </ul>
+
+        <ul class="feature-list">
+        <li>On-site delivery of 8 customized modules for salon teams up to 8.</li>
+        <li>Strategies for Growth</li>
+        <li>Service Expansions</li>
+        <li>Financial Overview</li>
+        <li>Follow the Money</li>
+        <li>Business Innovations</li>
+        <li>Training Initiatives</li>
+        <li>Essentials of Leadership</li>
+        <li>The 4Rs of Revenue</li>
+
+        <!-- Hidden Items -->
+        <div class="more-features">
+            <li>7 Hour Live Training</li>
+            <li>Team Workbooks</li>
+            <li>Leadership Coaching</li>
+            <li>Revenue Strategy</li>
+            <li>Guest Experience Systems</li>
+            <li>KPI Training</li>
+            <li>Q&A / Action Planning</li>
+        </div>
+    </ul>
+
+    <button class="expand-btn">Show More</button>
+
         <a href="https://elev8-salon-business-development.teachable.com/l/pdp/elev8-salon-business-training" 
    target="_blank" 
    class="purchase-btn">
@@ -603,6 +618,19 @@ document.querySelectorAll('.service-option:not(.has-dropdown)').forEach(btn => {
             addDeleteButtons();
         } else {
             document.getElementById('admin-error').textContent = '✗ Incorrect password. Try again.';
+        }
+    });
+
+    const expandBtn = document.querySelector(".expand-btn");
+    const moreFeatures = document.querySelector(".more-features");
+
+    expandBtn.addEventListener("click", () => {
+        moreFeatures.classList.toggle("show");
+
+        if (moreFeatures.classList.contains("show")) {
+            expandBtn.textContent = "Show Less";
+        } else {
+            expandBtn.textContent = "Show More";
         }
     });
 </script>
