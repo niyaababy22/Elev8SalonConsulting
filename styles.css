@@ -874,6 +874,60 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
     }
 }
 
+/* ===== DURATION DROPDOWN ===== */
+.service-option-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+}
+
+.service-option-wrapper .service-option {
+    margin-bottom: 0;
+    border-radius: 10px;
+    transition: border-radius 0.2s;
+}
+
+.service-option-wrapper .service-option.open {
+    border-radius: 10px 10px 0 0;
+    border-color: var(--accent);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.duration-dropdown {
+    display: none;
+    flex-direction: column;
+    border: 1px solid var(--accent);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.duration-dropdown.open {
+    display: flex;
+}
+
+.duration-dropdown a {
+    padding: 0.75rem 1.2rem;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.duration-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.duration-dropdown a:hover {
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent);
+}
+
 /* ===== SCROLL TO TOP BUTTON ===== */
 #scroll-top {
     position: fixed;
