@@ -65,6 +65,17 @@ header.scrolled .logo {
     transform-origin: left center;
 }
 
+@media (max-width: 1024px) {
+    .logo img {
+        height: 80px;
+        transform: scale(1.2);
+    }
+
+    nav {
+        padding: 0.85rem 1.5rem;
+    }
+}
+
 /* Desktop nav links */
 .nav-links {
     display: flex;
@@ -166,7 +177,7 @@ header.scrolled .logo {
                     rgba(0, 0, 0, 0.5), 
                     rgba(0, 0, 0, 0.5)
                 ), 
-                url('images/professional.jpg') no-repeat center center / cover;
+                url('images/professional.jpg') no-repeat center top / cover;
     color: var(--white);
     text-align: center;
     position: relative;
@@ -444,12 +455,24 @@ header.scrolled .logo {
 }
 
 .pricing-card ul li::before {
-    content: "✓";
+    content: "•";
     position: absolute;
     left: 0;
     color: var(--accent);
     font-weight: bold;
 }
+
+.card-description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+}
+
 
 .pricing-card button,
 .purchase-btn {
