@@ -1007,6 +1007,13 @@ footer { background: var(--primary); color: var(--white); text-align: center; pa
     border-color: var(--primary);
 }
 
+.contact-price {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    font-weight: 500;
+}
+
 @media (max-width: 480px) {
     .service-modal-content {
         padding: 1.5rem;
