@@ -305,25 +305,25 @@
         <h2>Book a Service</h2>
         <p class="modal-subtitle">Select a service to schedule your appointment</p>
 
-        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/30min">
-            <div class="service-option-inner">
-                <div class="service-details">
-                    <strong>8-Module Stylist Development Training</strong>
-                    <span>Student or staff development modules</span>
-                </div>
-                <span class="service-price">$1,200</span>
-            </div>
-        </button>
+        <button class="service-option contact-for-price" data-section="contact">
+    <div class="service-option-inner">
+        <div class="service-details">
+            <strong>8-Module Stylist Development Training</strong>
+            <span>Student or staff development modules</span>
+        </div>
+        <span class="service-price contact-price">Contact for Pricing</span>
+    </div>
+</button>
 
-        <button class="service-option" data-url="https://calendly.com/elev8salonconsulting/8-facilitator-led-salon-development-modules">
-            <div class="service-option-inner">
-                <div class="service-details">
-                    <strong>8 Facilitator-Led Salon Development Modules</strong>
-                    <span>Student or staff development modules</span>
-                </div>
-                <span class="service-price">$1,200</span>
-            </div>
-        </button>
+<button class="service-option contact-for-price" data-section="contact">
+    <div class="service-option-inner">
+        <div class="service-details">
+            <strong>8 Facilitator-Led Salon Development Modules</strong>
+            <span>Student or staff development modules</span>
+        </div>
+        <span class="service-price contact-price">Contact for Pricing</span>
+    </div>
+</button>
 
 
         <!-- 1-on-1 Career Coaching -->
@@ -448,13 +448,22 @@ document.querySelectorAll('.duration-dropdown a').forEach(link => {
     });
 });
 
+// Contact for price services
+document.querySelectorAll('.contact-for-price').forEach(btn => {
+    btn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
 // Flat price services (no dropdown)
-document.querySelectorAll('.service-option:not(.has-dropdown)').forEach(btn => {
+document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-price)').forEach(btn => {
     btn.addEventListener('click', () => {
         modal.style.display = 'none';
         Calendly.initPopupWidget({ url: btn.dataset.url });
     });
 });
+
 
 
 
