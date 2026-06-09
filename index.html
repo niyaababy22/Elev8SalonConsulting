@@ -95,60 +95,67 @@
 </section>
 
 <section class="pricing-section" id="services">
+  <div class="pricing-grid">
+ 
+    <!-- Card 1 -->
     <div class="pricing-card">
-        <h3>8-Module Stylist Development Training</h3>
-        <p class="card-description">Participants leave with a clear understanding of
-             how to build a loyal clientele, 
-             increase income, improve productivity, and position themselves
-             for leadership opportunities within the beauty industry.
-        <h2>Contact for Pricing</h2>
-        <ul>
-            <li>Elevating Guest Experience</li>
-            <li>Know to Grow</li>
-            <li>Commit to Winning</li>
-            <li>Give Yourself a Raise</li>
-            <li>Tools of Investment</li>
-            <li>The 5 Ps of Salon Growth</li>
-            <li>The Importance of KPI's</li>
-            <li>Professional Image and Communication
-        </ul>
-        <a href="https://elev8-salon-business-development.teachable.com/l/pdp/course-title" 
-        target="_blank" class="purchase-btn">
-    Purchase Now
-</a>
+      <h3 class="pricing-card__title">8-Module Stylist Development Training</h3>
+      <div class="pricing-card__divider"></div>
+      <p class="pricing-card__description">Participants leave with a clear understanding of how to build a loyal clientele, increase income, improve productivity, and position themselves for leadership opportunities within the beauty industry.</p>
+      <p class="pricing-card__price-label">Investment</p>
+      <p class="pricing-card__price">Contact for Pricing</p>
+      <p class="pricing-card__list-label">What's included</p>
+      <ul class="pricing-card__list">
+        <li>Elevating Guest Experience</li>
+        <li>Know to Grow</li>
+        <li>Commit to Winning</li>
+        <li>Give Yourself a Raise</li>
+        <li>Tools of Investment</li>
+        <li>The 5 Ps of Salon Growth</li>
+        <li>The Importance of KPIs</li>
+        <li>Professional Image and Communication</li>
+      </ul>
+      <div class="pricing-card__cta">
+        <a href="#contact" class="pricing-card__btn">Request a Quote</a>
+      </div>
     </div>
-    <div class="pricing-card featured">
-        <h3>8 Facilitator-Led Salon Development Modules</h3>
-        <h2>Contact for Pricing</h2>
-
-        <ul class="feature-list">
-    <li>Strategies for Growth</li>
-    <li>Service Expansions</li>
-    <li>Financial Overview</li>
-    <li>Follow the Money</li>
-    <li>Business Innovations</li>
-    <li>Training Initiatives</li>
-    <li>Essentials of Leadership</li>
-    <li>The 4Rs of Revenue</li>
-</ul>
-
-<ul class="more-features">
-    <li>7 Hour Live Training</li>
-    <li>Team Workbooks</li>
-    <li>Leadership Coaching</li>
-    <li>Revenue Strategy</li>
-    <li>Guest Experience Systems</li>
-    <li>KPI Training</li>
-    <li>Q&A / Action Planning</li>
-</ul>
-
-<button class="expand-btn">Show More</button>
-
-        <a href="https://elev8-salon-business-development.teachable.com/l/pdp/elev8-salon-business-training" 
-   target="_blank" 
-   class="purchase-btn">
-   Purchase Now
-</a>
+ 
+    <!-- Card 2 (featured) -->
+    <div class="pricing-card pricing-card--featured">
+      <h3 class="pricing-card__title">8 Facilitator-Led Salon Development Modules</h3>
+      <div class="pricing-card__divider"></div>
+      <p class="pricing-card__price-label">Investment</p>
+      <p class="pricing-card__price">Contact for Pricing</p>
+      <p class="pricing-card__list-label">Core modules</p>
+      <ul class="pricing-card__list">
+        <li>Strategies for Growth</li>
+        <li>Service Expansions</li>
+        <li>Financial Overview</li>
+        <li>Follow the Money</li>
+        <li>Business Innovations</li>
+        <li>Training Initiatives</li>
+        <li>Essentials of Leadership</li>
+        <li>The 4Rs of Revenue</li>
+      </ul>
+      <div class="pricing-card__more" id="more-features">
+        <p class="pricing-card__list-label">Also included</p>
+        <ul class="pricing-card__list">
+          <li>7-hour live training</li>
+          <li>Team workbooks</li>
+          <li>Leadership coaching</li>
+          <li>Revenue strategy</li>
+          <li>Guest experience systems</li>
+          <li>KPI training</li>
+          <li>Q&amp;A and action planning</li>
+        </ul>
+      </div>
+      <div class="pricing-card__cta">
+        <button class="pricing-card__btn pricing-card__btn--toggle" id="expand-btn" onclick="togglePricingMore()">Show More</button>
+        <a href="#contact" class="pricing-card__btn pricing-card__btn--filled">Request a Quote</a>
+      </div>
+    </div>
+ 
+  </div>
 </section>
 
 <!-- Swiper CSS -->
@@ -645,19 +652,13 @@ document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-p
             document.getElementById('admin-error').textContent = '✗ Incorrect password. Try again.';
         }
     });
-
-    const expandBtn = document.querySelector(".expand-btn");
-    const moreFeatures = document.querySelector(".more-features");
-
-    expandBtn.addEventListener("click", () => {
-        moreFeatures.classList.toggle("show");
-
-        if (moreFeatures.classList.contains("show")) {
-            expandBtn.textContent = "Show Less";
-        } else {
-            expandBtn.textContent = "Show More";
-        }
-    });
+ function togglePricingMore() {
+    const more = document.getElementById('more-features');
+    const btn  = document.getElementById('expand-btn');
+    const open = more.classList.toggle('pricing-card__more--open');
+    btn.textContent = open ? 'Show Less' : 'Show More';
+  }
+    
 </script>
 
 </body>
