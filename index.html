@@ -167,7 +167,7 @@
             <h2>Elev8 Testimonials</h2>
             <p>Hear from professionals who have transformed their careers with Elev8 Salon Consulting</p>
         </div>
-
+ 
         <!-- Swiper -->
         <div class="swiper testimonials-swiper">
             <div class="swiper-wrapper">
@@ -198,44 +198,50 @@
                 <div class="swiper-slide">
                     <div class="testimonial-card">
                         <div class="testimonial-quote">"</div>
-                        <p class="testimonial-text">My experience with Elev8 has been wonderful. I've been in the industry as both stylist and business owner and I am truly impressed. Chotal's approach to growing salon business and her commitment to professionalism stands out. She has been a great support assisting me with my goals and the salon goals. Elev8 is a must for salon success! — Lina Franklin, Master Cosmetologist, Barber, and Barber Instructor</p>
+                        <p class="testimonial-text">My experience with Elev8 has been wonderful. I've been in the industry as both stylist and business owner and I am truly impressed. Chotal's approach to growing salon business and her commitment to professionalism stands out. She has been a great support assisting me with my goals and the salon goals. Elev8 is a must for salon success!</p>
+                        <p class="testimonial-author">— Lina Franklin, Master Cosmetologist, Barber, and Barber Instructor</p>
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+             <div class="swiper-nav-row">
             <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
         </div>
-
-        <!-- Leave a Review button -->
+ 
+        <!-- Buttons -->
         <div class="testimonials-buttons">
-    <button class="cta-button" id="open-review-form">Leave a Review</button>
-    <button class="admin-btn" id="open-admin">Manage Reviews</button>
-</div>
-
-        
-
-        <!-- Review Form (hidden by default) -->
+            <button class="cta-button" id="open-review-form">Leave a Review</button>
+            <button class="admin-btn" id="open-admin">Manage Reviews</button>
+        </div>
+ 
+        <!-- Review Form -->
         <div id="review-form-container" style="display: none; margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
             <div class="review-form-box">
                 <h3>Share Your Experience</h3>
                 <form id="review-form">
-                    <div class="form-group">
-                        <label for="review-name">Your Name *</label>
-                        <input type="text" id="review-name" placeholder="Your name" required>
+                    <div class="form-group" id="name-field-group">
+                        <label for="review-name">Your Name</label>
+                        <input type="text" id="review-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group anon-check-group">
+                        <label class="anon-label">
+                            <input type="checkbox" id="anonymous-check">
+                            Post anonymously
+                        </label>
                     </div>
                     <div class="form-group">
                         <label for="review-text">Your Review *</label>
                         <textarea id="review-text" placeholder="Share your experience with Elev8..." required></textarea>
                     </div>
                     <div style="display: flex; gap: 1rem;">
-                        <button type="submit" class="submit-button">Submit Review</button>
+                        <button type="submit" class="review-submit-btn">Submit Review</button>
                         <button type="button" class="cancel-review-btn" id="cancel-review">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
-
+ 
     </div>
 </section>
 
@@ -295,7 +301,7 @@
                         <label for="message">Message *</label>
                         <textarea id="message" name="message" placeholder="Your message..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-button" id="submit-btn">Send Message</button>
+                    <button type="submit" class="contact-submit-btn" id="submit-btn">Send Message</button>
                     <p id="form-status" style="margin-top: 1rem; font-weight: 600; text-align: center;"></p>
                 </form>
             </div>
@@ -405,8 +411,8 @@
         </div>
         <p id="admin-error" style="color: #8B0000; font-weight: 600; text-align: center; margin-top: 0.5rem;"></p>
         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-            <button class="submit-button" id="admin-submit">Enter</button>
-            <button class="cancel-review-btn" id="admin-cancel">Cancel</button>
+            <button class="review-submit-btn" id="admin-submit">Enter</button>
+<button class="cancel-review-btn" id="admin-cancel">Cancel</button>
         </div>
     </div>
 </div>
@@ -530,7 +536,7 @@ document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-p
         }
     });
 
-    // Swiper init
+     // Swiper init
     const swiper = new Swiper('.testimonials-swiper', {
         slidesPerView: 1,
         spaceBetween: 24,
@@ -539,25 +545,25 @@ document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-p
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
-
+ 
     // Load saved reviews from localStorage on page load
     function loadSavedReviews() {
         const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
         saved.forEach(review => { addSlide(review.name, review.text); });
     }
-
+ 
     function saveReview(name, text) {
         const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
         saved.push({ name, text });
         localStorage.setItem('elev8_reviews', JSON.stringify(saved));
     }
-
+ 
     function deleteReview(savedIndex) {
         const saved = JSON.parse(localStorage.getItem('elev8_reviews') || '[]');
         saved.splice(savedIndex, 1);
         localStorage.setItem('elev8_reviews', JSON.stringify(saved));
     }
-
+ 
     function addSlide(name, text, savedIndex = null) {
         const newSlide = document.createElement('div');
         newSlide.classList.add('swiper-slide');
@@ -566,62 +572,76 @@ document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-p
             <div class="testimonial-card">
                 <div class="testimonial-quote">"</div>
                 <p class="testimonial-text">${text}</p>
-                ${name ? `<p style="margin-top:1rem; font-weight:600; color:var(--accent);">— ${name}</p>` : ''}
+                ${name ? `<p class="testimonial-author">— ${name}</p>` : ''}
             </div>
         `;
         swiper.appendSlide(newSlide);
     }
-
+ 
+    // FIX: rebuild all delete buttons fresh each time so indices stay accurate
     function addDeleteButtons() {
         const originalCount = 5;
         swiper.slides.forEach((slide, index) => {
-            if (index >= originalCount && !slide.querySelector('.delete-slide-btn')) {
-                const btn = document.createElement('button');
-                btn.classList.add('delete-slide-btn');
-                btn.innerHTML = '✕';
-                btn.addEventListener('click', () => {
-                    const savedIndex = index - originalCount;
-                    deleteReview(savedIndex);
-                    swiper.removeSlide(index);
-                    swiper.slides.forEach((s, i) => {
-                        if (i >= originalCount) s.dataset.savedIndex = i - originalCount;
-                    });
-                });
-                slide.querySelector('.testimonial-card').appendChild(btn);
-            }
+            if (index < originalCount) return;
+ 
+            // Remove any existing delete button first to avoid duplicates
+            const existing = slide.querySelector('.delete-slide-btn');
+            if (existing) existing.remove();
+ 
+            const savedIndex = index - originalCount;
+            const btn = document.createElement('button');
+            btn.classList.add('delete-slide-btn');
+            btn.innerHTML = '✕ Remove';
+            btn.addEventListener('click', () => {
+                deleteReview(savedIndex);
+                swiper.removeSlide(index);
+                // Rebuild all buttons so indices stay correct after removal
+                addDeleteButtons();
+            });
+            slide.querySelector('.testimonial-card').appendChild(btn);
         });
     }
-
+ 
     loadSavedReviews();
-
+ 
+    // Anonymous checkbox — hide/show name field
+    document.getElementById('anonymous-check').addEventListener('change', function() {
+        const nameField = document.getElementById('name-field-group');
+        nameField.style.display = this.checked ? 'none' : 'block';
+        if (this.checked) document.getElementById('review-name').value = '';
+    });
+ 
     document.getElementById('open-review-form').addEventListener('click', () => {
         const form = document.getElementById('review-form-container');
         form.style.display = 'block';
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-
+ 
     document.getElementById('cancel-review').addEventListener('click', () => {
         document.getElementById('review-form-container').style.display = 'none';
         document.getElementById('review-form').reset();
+        document.getElementById('name-field-group').style.display = 'block';
     });
-
+ 
     document.getElementById('review-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const name = document.getElementById('review-name').value.trim();
+        const isAnon = document.getElementById('anonymous-check').checked;
+        const name = isAnon ? '' : document.getElementById('review-name').value.trim();
         const text = document.getElementById('review-text').value.trim();
         if (!text) return;
-
+ 
         saveReview(name, text);
         const savedIndex = JSON.parse(localStorage.getItem('elev8_reviews') || '[]').length - 1;
         addSlide(name, text, savedIndex);
         swiper.slideTo(swiper.slides.length - 1);
         document.getElementById('review-form-container').style.display = 'none';
         document.getElementById('review-form').reset();
+        document.getElementById('name-field-group').style.display = 'block';
         if (document.body.classList.contains('admin-mode')) addDeleteButtons();
     });
-
+ 
     const adminModal = document.getElementById('admin-modal');
-
+ 
     document.getElementById('open-admin').addEventListener('click', () => {
         if (document.body.classList.contains('admin-mode')) {
             document.body.classList.remove('admin-mode');
@@ -632,15 +652,15 @@ document.querySelectorAll('.service-option:not(.has-dropdown):not(.contact-for-p
         document.getElementById('admin-password').value = '';
         document.getElementById('admin-error').textContent = '';
     });
-
+ 
     document.getElementById('admin-cancel').addEventListener('click', () => {
         adminModal.style.display = 'none';
     });
-
+ 
     adminModal.addEventListener('click', (e) => {
         if (e.target === adminModal) adminModal.style.display = 'none';
     });
-
+ 
     document.getElementById('admin-submit').addEventListener('click', () => {
         const password = document.getElementById('admin-password').value;
         if (password === 'hairislife') {
