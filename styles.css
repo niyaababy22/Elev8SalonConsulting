@@ -123,9 +123,7 @@ header.scrolled .logo {
     color: var(--accent);
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
+
 
 /* Hamburger — hidden on desktop */
 .menu-toggle {
